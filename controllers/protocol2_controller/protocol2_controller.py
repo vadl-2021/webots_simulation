@@ -62,12 +62,15 @@ def leg_raise_type1(leg):
     set_motor_speed("hipx_" + leg, 0.2)
     robot.step(2000)
 
-set_motor_speed("hipy_b", -0.5)
+#set_motor_speed("hipy_a", 2)
+#set_motor_speed("hipy_b", 2)
+#set_motor_speed("hipy_c", 2)
+#set_motor_speed("hipy_d", 2)
 #set_motor_speed("hipy_a", -0.5)
 set_motor_position("leg_b", 1.5)
-#set_motor_position("leg_a", 1.5)
-#set_motor_position("leg_c", 0.7)
-#set_motor_position("leg_d", 0.7)
+set_motor_position("leg_a", 1.5)
+set_motor_position("leg_c", 1.5)
+set_motor_position("leg_d", 1.5)
 
 robot.step(5000)
 
