@@ -4,8 +4,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.8498364944756911 0.4887796738735221 0.19716075437409428 5.434123397373329
-  position -0.7864968685403109 0.5579924336169453 1.8372459181336172
+  orientation 0.148245475395345 0.987792256575604 0.04785119511657438 6.052917090175646
+  position -0.37931904723808174 -1.1185783187438658 1.7165006050361553
 }
 Background {
   skyColor [
@@ -79,8 +79,8 @@ DEF ROBOT Robot {
         position 6.2490825602159225e-06
         axis 0 1 0
         anchor -0.06 -0.06 0
-        minStop -2
-        maxStop 2
+        minStop -0.5
+        maxStop 0.5
       }
       device [
         DEF hipx_a_pos_sensor PositionSensor {
@@ -88,8 +88,8 @@ DEF ROBOT Robot {
         }
         DEF h1a RotationalMotor {
           name "hipx_a"
-          minPosition -2
-          maxPosition 2
+          minPosition -3.102793096529908e-12
+          maxPosition 0.08727479584734715
         }
       ]
       endPoint Solid {
@@ -148,6 +148,8 @@ DEF ROBOT Robot {
                     boundingObject USE leg2
                     physics Physics {
                     }
+                    linearVelocity 2.6679630544035584e-06 -2.545999498162745e-05 -7.4940625946439335e-06
+                    angularVelocity -5.328313965066935e-05 3.1485197229904e-05 0.0001559574709962347
                   }
                 }
                 Shape {
@@ -166,6 +168,8 @@ DEF ROBOT Robot {
               boundingObject USE leg1
               physics Physics {
               }
+              linearVelocity -9.922746973973589e-06 1.2306896807590512e-05 -1.5568496486106914e-05
+              angularVelocity -5.453991411081887e-05 3.225577535206849e-05 0.00015785196642830617
             }
           }
           Shape {
@@ -186,6 +190,8 @@ DEF ROBOT Robot {
           density -1
           mass 1
         }
+        linearVelocity -1.7705018804079486e-05 3.4168119419206276e-05 -1.880387638658032e-05
+        angularVelocity -5.679037610107534e-05 3.407041430554489e-05 0.00016107298889391893
       }
     }
     DEF body_hip1_b HingeJoint {
@@ -193,8 +199,8 @@ DEF ROBOT Robot {
         position -9.791196537169106e-07
         axis 0 1 0
         anchor 0.06 -0.06 0
-        minStop -2
-        maxStop 2
+        minStop -0.5
+        maxStop 0.5
       }
       device [
         DEF hipx_b_pos_sensor PositionSensor {
@@ -202,8 +208,6 @@ DEF ROBOT Robot {
         }
         DEF h1b RotationalMotor {
           name "hipx_b"
-          minPosition -2
-          maxPosition 2
         }
       ]
       endPoint Solid {
@@ -221,7 +225,6 @@ DEF ROBOT Robot {
               }
               DEF h2 RotationalMotor {
                 name "hipy_b"
-                maxTorque 25
               }
             ]
             endPoint Solid {
@@ -262,6 +265,8 @@ DEF ROBOT Robot {
                     boundingObject USE leg2
                     physics Physics {
                     }
+                    linearVelocity -5.594951108082627e-05 -2.1931010655126843e-05 -3.075293142736849e-05
+                    angularVelocity 8.43715348720393e-05 -3.824010538015967e-05 -0.0001950683127650608
                   }
                 }
                 Shape {
@@ -280,6 +285,8 @@ DEF ROBOT Robot {
               boundingObject USE leg1
               physics Physics {
               }
+              linearVelocity -2.9652929626619184e-05 2.713982887838784e-05 -2.442902730884025e-05
+              angularVelocity 8.4053448602372e-05 -3.923330925581416e-05 -0.00019572533822770789
             }
           }
           Shape {
@@ -300,6 +307,8 @@ DEF ROBOT Robot {
           density -1
           mass 1
         }
+        linearVelocity -1.5880942831628885e-05 5.481608721288467e-05 -1.9343773198947645e-05
+        angularVelocity -5.707791793096548e-05 -4.144036230377968e-05 0.00016227875458560474
       }
     }
     DEF body_hip1_c HingeJoint {
@@ -307,8 +316,8 @@ DEF ROBOT Robot {
         position 1.0297873744292919e-05
         axis 0 1 0
         anchor 0 0.06 0.06
-        minStop -2
-        maxStop 2
+        minStop -0.5
+        maxStop 0.5
       }
       device [
         DEF hipx_c_pos_sensor PositionSensor {
@@ -374,6 +383,8 @@ DEF ROBOT Robot {
                     boundingObject USE leg2
                     physics Physics {
                     }
+                    linearVelocity 1.7149607016579255e-05 4.0234461808450775e-05 1.3231230146742942e-05
+                    angularVelocity -6.239578928214585e-05 9.712394012669542e-06 0.00016186843976501684
                   }
                 }
                 Shape {
@@ -392,6 +403,8 @@ DEF ROBOT Robot {
               boundingObject USE leg1
               physics Physics {
               }
+              linearVelocity -3.4021833086190708e-06 4.577023726740117e-05 1.9824363434837531e-07
+              angularVelocity -6.13656256931611e-05 9.12931018322836e-06 0.00016197539163205076
             }
           }
           Shape {
@@ -412,6 +425,8 @@ DEF ROBOT Robot {
           density -1
           mass 1
         }
+        linearVelocity -1.5483365184891794e-05 4.25046021833424e-05 -9.049065012106895e-06
+        angularVelocity -5.957981226406348e-05 8.124866642210182e-06 0.00016212204026400554
       }
     }
     DEF body_hip1_d HingeJoint {
@@ -419,8 +434,8 @@ DEF ROBOT Robot {
         position 6.421352862656149e-06
         axis 0 1 0
         anchor 0 -0.06 -0.06
-        minStop -2
-        maxStop 2
+        minStop -0.5
+        maxStop 0.5
       }
       device [
         DEF hipx_d_pos_sensor PositionSensor {
@@ -428,8 +443,6 @@ DEF ROBOT Robot {
         }
         DEF h1d RotationalMotor {
           name "hipx_d"
-          minPosition -2
-          maxPosition 2
         }
       ]
       endPoint Solid {
@@ -488,6 +501,8 @@ DEF ROBOT Robot {
                     boundingObject USE leg2
                     physics Physics {
                     }
+                    linearVelocity 1.820364552757541e-05 4.1755018294139365e-05 1.0804110763886587e-05
+                    angularVelocity -6.340391497813695e-05 -4.556435408676306e-06 0.00016169911538839107
                   }
                 }
                 Shape {
@@ -506,6 +521,8 @@ DEF ROBOT Robot {
               boundingObject USE leg1
               physics Physics {
               }
+              linearVelocity -2.3242935532897057e-06 3.805068849339691e-05 -1.234364460939531e-06
+              angularVelocity -6.187429606907308e-05 -3.81102039466051e-06 0.00016193875232650159
             }
           }
           Shape {
@@ -526,6 +543,8 @@ DEF ROBOT Robot {
           density -1
           mass 1
         }
+        linearVelocity -1.4761846968802672e-05 4.3053489762698404e-05 -9.86461386054316e-06
+        angularVelocity -5.9592711859275324e-05 -2.412822994907706e-06 0.00016206317855068457
       }
     }
     DEF body Shape {

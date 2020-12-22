@@ -4,6 +4,9 @@
 #  from controller import Robot, Motor, DistanceSensor
 import time
 
+PLOT = True
+
+import matplotlib.pyplot as plt
 from controller import Robot, Motor
 
 # create the Robot instance.
@@ -62,42 +65,141 @@ def leg_raise_type1(leg):
     set_motor_speed("hipx_" + leg, 0.2)
     robot.step(2000)
 
-#set_motor_speed("hipy_a", 2)
-#set_motor_speed("hipy_b", 2)
-#set_motor_speed("hipy_c", 2)
-#set_motor_speed("hipy_d", 2)
-#set_motor_speed("hipy_a", -0.5)
-set_motor_position("leg_b", 1.5)
-set_motor_position("leg_a", 1.5)
-set_motor_position("leg_c", 1.5)
-set_motor_position("leg_d", 1.5)
+def gait_1():
+    set_motor_position("hipy_c", 0)
+    set_motor_position("hipy_d", 0)
+    set_motor_position("hipy_a", 0)
+    set_motor_position("hipy_b", 0)
+    set_motor_position("leg_c", 1.57)
+    set_motor_position("leg_d", 1.57)
+    set_motor_position("leg_a", 1.57)
+    set_motor_position("leg_b", 1.57)
+    robot.step(2000)
+    while True:
+        set_motor_position("hipx_a", 0.5)
+        set_motor_position("hipx_b", -0.5)
+        robot.step(2000)
+        set_motor_position("hipy_c", -0.5)
+        set_motor_position("leg_c", 0.5)
+        robot.step(2000)
+        set_motor_position("hipx_a", -0.5)
+        set_motor_position("hipx_b", 0.5)
+        set_motor_position("hipy_c", 0)
+        set_motor_position("leg_c", 1.57)
+        robot.step(2000)
+        set_motor_position("hipx_a", 0.5)
+        set_motor_position("leg_a", 0.5)
+        robot.step(500)
+        set_motor_position("leg_a", 1.57)
+        robot.step(2000)
+        set_motor_position("hipx_b", -0.5)
+        set_motor_position("leg_b", 0.5)
+        robot.step(500)
+        set_motor_position("leg_b", 1.57)
 
-robot.step(5000)
+def get_tilt():
+    RPT = imu.getRollPitchYaw()
+    return abs(RPT[0]) + abs(RPT[1])
 
-#set_motor_speed("hipy_d", -0.2)
-#set_motor_speed("leg_d", -0.5)
-#set_motor_speed("hipx_d", 0.2)
+def record_tilt():
+    tilt_data.append(get_tilt())
 
-#set_motor_speed("hipy_a", -0.2)
-#set_motor_speed("leg_a", -0.5)
-#set_motor_speed("hipx_a", 0.2)
+def get_tilt_data():
+    return tilt_data
 
-#robot.step(2000)
+def plot_tilt():
+    plt.plot(get_tilt_data())
+    plt.ylabel('tile = abs(roll) + abs(pitch)')
+    plt.show()
 
-##set_motor_position("leg_b", 0.3)
-#set_motor_position("leg_c", 0.3)
+tilt_data = []
 
-#robot.step(2000)
+def gait_2():
+    set_motor_position("hipy_c", 0)
+    set_motor_position("hipy_d", 0)
+    set_motor_position("hipy_a", 0)
+    set_motor_position("hipy_b", 0)
+    set_motor_position("leg_c", 1.57)
+    set_motor_position("leg_d", 1.57)
+    set_motor_position("leg_a", 1.57)
+    set_motor_position("leg_b", 1.57)
+    robot.step(2000)
+    record_tilt()
+    set_motor_position("hipx_a", 0.2)
+    set_motor_position("hipx_b", -0.2)
+    set_motor_position("leg_c", 1.57)
+    set_motor_position("leg_d", 1.57)
+    set_motor_position("leg_a", 1.57)
+    set_motor_position("leg_b", 1.57)
+    robot.step(2000)
+    record_tilt()
 
-#
-##set_motor_speed("hipy_c", -0.2)
-#set_motor_speed("leg_c", -0.5)
-#set_motor_speed("hipx_c", 0.2)
+    while True:
+        set_motor_position("hipy_c", -0.5)
+        set_motor_position("leg_c", 0.5)
+        robot.step(2000)
+        record_tilt()
+        set_motor_position("hipx_a", -0.2)
+        set_motor_position("hipx_b", 0.2)
+        set_motor_position("leg_c", 1.57)
+        set_motor_position("leg_d", 1.57)
+        set_motor_position("leg_a", 1.57)
+        set_motor_position("leg_b", 1.57)
 
-#set_motor_speed("hipy_d", -0.2)
-#set_motor_speed("leg_d", -0.5)
-#set_motor_speed("hipx_d", -0.2)
+        robot.step(2000)
+        record_tilt()
+        set_motor_position("hipx_c", -0.5)
+        set_motor_position("hipx_d", 0.5)
+        robot.step(2000)
+        record_tilt()
+        set_motor_position("hipy_a", -0.5)
+        robot.step(500)
+        record_tilt()
+        set_motor_position("hipx_a", 0.5)
+        robot.step(500)
+        record_tilt()
+        set_motor_position("hipy_a", -0.2)
+        robot.step(2000)
+        record_tilt()
+        set_motor_position("hipx_c", 0)
+        set_motor_position("hipx_d", 0)
 
+
+        robot.step(2000)
+        record_tilt()
+        set_motor_position("hipx_c", 0.5)
+        set_motor_position("hipx_d", -0.5)
+        robot.step(2000)
+        record_tilt()
+        set_motor_position("hipy_b", -0.5)
+        robot.step(500)
+        record_tilt()
+        set_motor_position("hipx_b", -0.5)
+        robot.step(500)
+        record_tilt()
+        set_motor_position("hipy_b", 0)
+        set_motor_position("hipx_c", 0)
+        set_motor_position("hipx_d", 0)
+        if PLOT: plot_tilt()
+
+imu = robot.getInertialUnit("inertial unit")
+imu.enable(200)
+robot.step(2000)
+print(imu.getRollPitchYaw())
+
+# 0. get data
+# 1. graph
+# 2. make dynamic
+
+# Next steps
+# 0) update motor characteristics 
+# 1) reduce tilt, motor usage, etc
+# 2) test on uneven terrain
+
+gait_2()
+
+#set_motor_position("hipy_a", 0)
+#set_motor_position("leg_a", 1.57)
 # Main loop:
 # - perform simulation steps until Webots is stopping the controller
 while robot.step(timestep) != -1:
